@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
-    'nplusone.ext.django',
+    # django debug toolbar と nplusoneを追加
     'debug_toolbar',
+    'nplusone.ext.django',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # django debug toolbar と nplusoneを追加
     'nplusone.ext.django.NPlusOneMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
