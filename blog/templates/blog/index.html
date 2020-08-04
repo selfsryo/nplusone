@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      {% for post in post_list %}
+      <li>
+		{{ post.title }} <br>
+		親カテゴリ {{ post.category.parent.name }}<br>
+        子カテゴリ {{ post.category.name }}<br>
+        <a href="{% url 'blog:detail' post.id %}">記事を読む</a>
+      </li><br>
+      {% empty %}
+      <p>まだ記事がありません。</p>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
