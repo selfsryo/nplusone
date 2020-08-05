@@ -4,12 +4,13 @@
   </head>
   <body>
     <h1>日記</h1>
+    <p>{{ category }}</p>
     <ul>
-      {% for post in posts %}
-      <li>
+      {% for post in category.get_posts_filtered_by_category %}
+	  <li>
         {{ post.title }} <br />
         親カテゴリ {{ post.category.parent.name }}<br>
-		子カテゴリ <a href="{% url 'blog:category_filter' post.category.id %}">{{ post.category.name }}</a>
+		子カテゴリ {{ post.category.name }}
 		<br>
 		<br>
         <ul>
@@ -31,15 +32,5 @@
       {% endfor %}
     </ul>
     <br/>
-    <h1>タグ一覧</h1>
-    <ul>
-      {% for tag in tags %}
-      <li>
-        <a href="{% url 'blog:tag_filter' tag.id %}">{{ tag.name }}</a>
-      </li>
-      {% empty %}
-      <p>登録されているタグはありません</p>
-      {% endfor %}
-    </ul>
   </body>
 </html>

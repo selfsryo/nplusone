@@ -3,8 +3,18 @@
     <title></title>
   </head>
   <body>
-	<h1>{{post.title}}</h1>
-	<div>カテゴリ：{{post.category.name}}</div>
+    <h1>{{post.title}}</h1>
+    <div>子カテゴリ：{{post.category.name}}</div>
+    <ul>
+	  タグ
+	  {% for tag in post.tag.all %}
+      <li>
+        {{ tag.name }}
+      </li>
+      {% empty %}
+      <p>タグはありません</p>
+      {% endfor %}
+    </ul>
     <p>{{post.main_text}}</p>
   </body>
 </html>

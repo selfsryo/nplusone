@@ -1,11 +1,13 @@
-from django.urls import include, path
-
+from django.urls import path
 
 from . import views
+
 
 app_name = 'blog'
 
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
+    path('', views.index, name='index'),
+    path('detail/<int:pk>', views.detail, name='detail'),
+    path('category/<int:pk>', views.category_filter, name='category_filter'),
+    path('tag/<int:pk>', views.tag_filter, name='tag_filter'),
 ]
