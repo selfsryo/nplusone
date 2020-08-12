@@ -133,5 +133,5 @@ INTERNAL_IPS = [
 ]
 
 # nplusone 設定
-NPLUSONE_RAISE = True
+# NPLUSONE_RAISE = True
 

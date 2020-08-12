@@ -29,8 +29,17 @@ class Category(models.Model):
         return self.post_set.all().select_related('category__parent').prefetch_related('tag')
 
 
+class PostManager(models.Manager):
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.select_related('category__parent').prefetch_related('tag')
+
+
 class Post(models.Model):
     title = models.CharField('タイトル', max_length=255)
     main_text = models.TextField('本文', null=True, blank=True)
     category = models.ForeignKey(Category, verbose_name='カテゴリ', on_delete=models.PROTECT)
     tag = models.ManyToManyField(Tag, verbose_name='タグ', blank=True)
+
+    objects = PostManager()

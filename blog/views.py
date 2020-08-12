@@ -7,7 +7,7 @@ from .models import Post, Category, Tag
 
 def index(request):
 	context = {
-		'posts': Post.objects.all().select_related('category__parent').prefetch_related('tag'),
+		'posts': Post.objects.all(),
 		'tags': Tag.objects.all(),
 	}
 	return render(request, 'blog/index.html', context)

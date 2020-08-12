@@ -1,36 +1,32 @@
-<html>
-  <head>
-    <title></title>
-  </head>
-  <body>
-    <h1>日記</h1>
-    <p>{{ category }}</p>
+<body>
+  
+  <h1>日記</h1>
+  <p>{{ category }}</p>
+  <ul>
+    {% for post in category.get_posts_filtered_by_category %}
+  <li>
+    {{ post.title }} <br />
+    親カテゴリ {{ post.category.parent.name }}<br>
+    子カテゴリ {{ post.category.name }}
+    <br>
+    <br>
     <ul>
-      {% for post in category.get_posts_filtered_by_category %}
-	  <li>
-        {{ post.title }} <br />
-        親カテゴリ {{ post.category.parent.name }}<br>
-		子カテゴリ {{ post.category.name }}
-		<br>
-		<br>
-        <ul>
-			タグ
-          {% for tag in post.tag.all %}
-          <li>
-            {{ tag.name }}
-          </li>
-          {% empty %}
-          <p>タグはありません</p>
-          {% endfor %}
-        </ul><br>
-        <a href="{% url 'blog:detail' post.id %}">記事を読む</a>
+      タグ
+      {% for tag in post.tag.all %}
+      <li>
+        {{ tag.name }}
       </li>
-      <br/>
-      <br/>
       {% empty %}
-      <p>まだ記事がありません。</p>
+      <p>タグはありません</p>
       {% endfor %}
-    </ul>
-    <br/>
-  </body>
-</html>
+    </ul><br>
+    <a href="{% url 'blog:detail' post.id %}">記事を読む</a>
+  </li>
+  <br/>
+  <br/>
+  {% empty %}
+  <p>まだ記事がありません。</p>
+  {% endfor %}
+</ul>
+
+</body>
