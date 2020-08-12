@@ -3,7 +3,7 @@
   <h1>日記</h1>
   <p>{{ category }}</p>
   <ul>
-    {% for post in category.get_posts_filtered_by_category %}
+    {% for post in category.post_set.all %}
   <li>
     {{ post.title }} <br />
     親カテゴリ {{ post.category.parent.name }}<br>

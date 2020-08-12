@@ -7,9 +7,6 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-    def get_posts_filtered_by_tag(self):
-        return self.post_set.all().select_related('category__parent').prefetch_related('tag')
-
 
 class ParentCategory(models.Model):
     name = models.CharField(max_length=255)
@@ -25,15 +22,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    def get_posts_filtered_by_category(self):
-        return self.post_set.all().select_related('category__parent').prefetch_related('tag')
-
 
 class PostManager(models.Manager):
 
     def get_queryset(self):
-        qs = super().get_queryset()
-        return qs.select_related('category__parent').prefetch_related('tag')
+        return super().get_queryset().select_related('category__parent').prefetch_related('tag')
 
 
 class Post(models.Model):
