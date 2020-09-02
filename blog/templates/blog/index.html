@@ -8,36 +8,39 @@
       <li>
         {{ post.title }} <br />
         親カテゴリ {{ post.category.parent.name }}<br>
-		子カテゴリ <a href="{% url 'blog:category_filter' post.category.id %}">{{ post.category.name }}</a>
-		<br>
-		<br>
+		    子カテゴリ <a href="{% url 'blog:category_filter' post.category.id %}">{{ post.category.name }}</a>
+		    <br>
+		    <br>  
         <ul>
-			タグ
+          タグ
           {% for tag in post.tag.all %}
-          <li>
-            {{ tag.name }}
-          </li>
+            <li>
+              <a href="{% url 'blog:tag_filter' tag.id %}">{{ tag.name }}</a>
+            </li>
           {% empty %}
-          <p>タグはありません</p>
+            <p>タグはありません</p>
           {% endfor %}
-        </ul><br>
+        </ul>
+        <br>
         <a href="{% url 'blog:detail' post.id %}">記事を読む</a>
       </li>
       <br/>
       <br/>
       {% empty %}
-      <p>まだ記事がありません。</p>
+        <p>まだ記事がありません。</p>
       {% endfor %}
     </ul>
     <br/>
     <h1>タグ一覧</h1>
     <ul>
       {% for tag in tags %}
-      <li>
-        <a href="{% url 'blog:tag_filter' tag.id %}">{{ tag.name }}</a>
-      </li>
+        <li>
+          <a href="{% url 'blog:tag_filter' tag.id %}">{{ tag.name }}</a>
+        </li>
       {% empty %}
-      <p>登録されているタグはありません</p>
+        <p>登録されているタグはありません</p>
       {% endfor %}
+      <br>
+      <br>
     </ul>
   </body>

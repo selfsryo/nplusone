@@ -9,6 +9,8 @@ def index(request):
 	context = {
 		'posts': Post.objects.all(),
 		'tags': Tag.objects.all(),
+		'categorys': Category.objects.all().prefetch_related('post_set'),
+		# 'categorys': Category.objects.all(),
 	}
 	return render(request, 'blog/index.html', context)
 
