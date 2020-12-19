@@ -4,19 +4,19 @@ from .models import Post, Category, ParentCategory, Tag
 
 
 class PostAdmin(admin.ModelAdmin):
-	list_display = ('title', 'category')
+    list_display = ('title', 'category')
 
 
 class CategoryAdmin(admin.ModelAdmin):
-	list_display = ('name', 'parent')
+    list_display = ('name', 'parent')
 
 
 class ParentCategoryAdmin(admin.ModelAdmin):
-	list_display = ('name',)
+    list_display = ('name',)
 
 
 class TagAdmin(admin.ModelAdmin):
-	list_display = ('name',)
+    list_display = ('name',)
 
 
 admin.site.register(Post, PostAdmin)

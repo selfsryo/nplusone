@@ -6,25 +6,25 @@ from .models import Post, Category, Tag
 
 
 def index(request):
-	context = {
-		'posts': Post.objects.all(),
-		'tags': Tag.objects.all(),
-		'categorys': Category.objects.all().prefetch_related('post_set'),
-		# 'categorys': Category.objects.all(),
-	}
-	return render(request, 'blog/index.html', context)
+    context = {
+        'posts': Post.objects.all(),
+        'tags': Tag.objects.all(),
+        'categorys': Category.objects.all().prefetch_related('post_set'),
+        # 'categorys': Category.objects.all(),
+    }
+    return render(request, 'blog/index.html', context)
 
 
 def detail(request, pk):
-	return render(request, 'blog/detail.html', {'post': get_object_or_404(Post, pk=pk)})
+    return render(request, 'blog/detail.html', {'post': get_object_or_404(Post, pk=pk)})
 
 
 def category_filter(request, pk):
-	return render(request, 'blog/category_filter.html', {'category': get_object_or_404(Category, pk=pk)})
+    return render(request, 'blog/category_filter.html', {'category': get_object_or_404(Category, pk=pk)})
 
 
 def tag_filter(request, pk):
-	return render(request, 'blog/tag_filter.html', {'tag': get_object_or_404(Tag, pk=pk)})
+    return render(request, 'blog/tag_filter.html', {'tag': get_object_or_404(Tag, pk=pk)})
 
 
 

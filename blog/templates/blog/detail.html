@@ -6,8 +6,8 @@
     <h1>{{post.title}}</h1>
     <div>子カテゴリ：{{post.category.name}}</div>
     <ul>
-	  タグ
-	  {% for tag in post.tag.all %}
+    タグ
+    {% for tag in post.tag.all %}
       <li>
         {{ tag.name }}
       </li>

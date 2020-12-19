@@ -8,9 +8,9 @@
       <li>
         {{ post.title }} <br />
         親カテゴリ {{ post.category.parent.name }}<br>
-		    子カテゴリ <a href="{% url 'blog:category_filter' post.category.id %}">{{ post.category.name }}</a>
-		    <br>
-		    <br>  
+        子カテゴリ <a href="{% url 'blog:category_filter' post.category.id %}">{{ post.category.name }}</a>
+        <br>
+        <br>  
         <ul>
           タグ
           {% for tag in post.tag.all %}
