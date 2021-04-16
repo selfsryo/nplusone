@@ -1,7 +1,7 @@
 asgiref==3.2.10
 blinker==1.4
 Django==3.1.8
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 nplusone==1.0.0
 pytz==2020.1
 six==1.15.0
